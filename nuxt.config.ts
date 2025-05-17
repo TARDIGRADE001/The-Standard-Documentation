@@ -81,13 +81,13 @@ export default defineNuxtConfig({
 
   llms: {
     // TODO: Change to your own domain and document configuration
-    domain: "https://docs-template.nuxt.dev/",
-    title: "Nuxt Docs Template",
+    domain: "https://the-standard.dev/",
+    title: "The Standard",
     description:
-      "A template for building documentation with Nuxt UI Pro and Nuxt Content.",
+      "A comprehensive guide to software engineering excellence.",
     full: {
-      title: "Nuxt Docs Template - Full Documentation",
-      description: "This is the full documentation for the Nuxt Docs Template.",
+      title: "The Standard - Full Documentation",
+      description: "This is the full documentation for The Standard.",
     },
     sections: [
       {
@@ -98,10 +98,10 @@ export default defineNuxtConfig({
         ],
       },
       {
-        title: "Essentials",
-        contentCollection: "docs",
+        title: "Standard",
+        contentCollection: "standard",
         contentFilters: [
-          { field: "path", operator: "LIKE", value: "/essentials%" },
+          { field: "path", operator: "LIKE", value: "/standard%" },
         ],
       },
     ],

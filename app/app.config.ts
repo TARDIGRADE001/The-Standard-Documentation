@@ -14,13 +14,13 @@ export default defineAppConfig({
     }
   },
   seo: {
-    siteName: 'Nuxt Docs Template'
+    siteName: 'The Standard - Comprehensive Guide to Software Engineering Excellence'
   },
   header: {
     title: '',
     to: '/',
     logo: {
-      alt: '',
+      alt: 'The Standard Logo',
       light: '',
       dark: ''
     },
@@ -28,55 +28,60 @@ export default defineAppConfig({
     colorMode: true,
     links: [{
       'icon': 'i-simple-icons-github',
-      'to': 'https://github.com/nuxt-ui-pro/docs',
+      'to': 'https://github.com/hassanhabib/The-Standard',
       'target': '_blank',
-      'aria-label': 'GitHub'
+      'aria-label': 'The Standard on GitHub'
+    }, {
+      'icon': 'i-simple-icons-discord',
+      'to': 'https://discord.gg/vdPZ7hS52X',
+      'target': '_blank',
+      'aria-label': 'The Standard Community on Discord'
     }]
   },
   footer: {
-    credits: `Copyright © ${new Date().getFullYear()}`,
-    colorMode: false,
+    credits: `Copyright © ${new Date().getFullYear()} | The Standard`,
+    colorMode: true,
     links: [{
-      'icon': 'i-simple-icons-nuxtdotjs',
-      'to': 'https://nuxt.com',
+      'icon': 'i-simple-icons-github',
+      'to': 'https://github.com/hassanhabib/The-Standard',
       'target': '_blank',
-      'aria-label': 'Nuxt Website'
+      'aria-label': 'The Standard on GitHub'
     }, {
       'icon': 'i-simple-icons-discord',
-      'to': 'https://discord.com/invite/ps2h6QT',
+      'to': 'https://discord.gg/vdPZ7hS52X',
       'target': '_blank',
-      'aria-label': 'Nuxt UI on Discord'
+      'aria-label': 'The Standard Community on Discord'
     }, {
-      'icon': 'i-simple-icons-x',
-      'to': 'https://x.com/nuxt_js',
+      'icon': 'i-lucide-youtube',
+      'to': 'https://www.youtube.com/watch?v=8PveoymxCok&list=PLan3SCnsISTQqmSTZHQbGxBmVDwQdrlub',
       'target': '_blank',
-      'aria-label': 'Nuxt on X'
-    }, {
-      'icon': 'i-simple-icons-github',
-      'to': 'https://github.com/nuxt/ui',
-      'target': '_blank',
-      'aria-label': 'Nuxt UI on GitHub'
+      'aria-label': 'The Standard YouTube Playlist'
     }]
   },
   toc: {
     title: 'Table of Contents',
     bottom: {
-      title: 'Community',
-      edit: 'https://github.com/nuxt-ui-pro/docs/edit/main/content',
+      title: 'Community Resources',
+      edit: 'https://github.com/hassanhabib/The-Standard/edit/master/content',
       links: [{
         icon: 'i-lucide-star',
         label: 'Star on GitHub',
-        to: 'https://github.com/nuxt/ui',
+        to: 'https://github.com/hassanhabib/The-Standard',
+        target: '_blank'
+      }, {
+        icon: 'i-lucide-globe',
+        label: 'Translations',
+        to: 'https://github.com/hassanhabib/The-Standard#translations',
+        target: '_blank'
+      }, {
+        icon: 'i-lucide-code',
+        label: 'Language Implementations',
+        to: 'https://github.com/hassanhabib/The-Standard#the-standard-in-different-programming-languages',
         target: '_blank'
       }, {
         icon: 'i-lucide-book-open',
-        label: 'Nuxt UI Pro docs',
-        to: 'https://ui.nuxt.com/getting-started/installation/pro/nuxt',
-        target: '_blank'
-      }, {
-        icon: 'i-simple-icons-nuxtdotjs',
-        label: 'Purchase a license',
-        to: 'https://ui.nuxt.com/pro/purchase',
+        label: 'Related Projects',
+        to: 'https://github.com/hassanhabib/The-Standard#projects',
         target: '_blank'
       }]
     }
