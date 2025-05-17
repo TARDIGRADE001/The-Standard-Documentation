@@ -32,3 +32,6 @@ logs
 
 # VSC
 .history
+
+# Processed content
+content/standard/**/*.md

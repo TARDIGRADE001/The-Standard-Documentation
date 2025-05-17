@@ -1,120 +1,79 @@
-name: Process Standard Content
+name: Copy Standard Content
 
-on: push
+on: 
+  push:
+    branches:
+      - main  # or master, depending on your default branch
+  workflow_dispatch:  # Allows manual triggering
 
 jobs:
-  process-content:
+  copy-content:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Full history for better compatibility
 
-      - name: Process and copy Markdown files
+      - name: Copy Standard content to Nuxt content directory
         run: |
           # Create base content directory
-          mkdir -p content/standard
-          
-          # Process Introduction files
-          echo "Processing Introduction files..."
-          for file in $(find ./0.\ Introduction -name "*.md" | sort -n); do
-            # Extract filename without extension and strip numbers
-            filename=$(basename "$file" .md)
-            slug=$(echo "$filename" | sed -E 's/^[0-9]+(\.[0-9]+)*[ -]*//')
-            slug=$(echo "$slug" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
-            
-            # Create target directory if needed
-            dir="content/standard/introduction"
-            mkdir -p "$dir"
-            
-            # Create target file with minimal front matter
-            target="$dir/$slug.md"
-            
-            # Extract title or use filename
-            title=$(grep -m 1 "^#" "$file" | sed 's/^#[ ]*//' || echo "$slug")
-            
-            # Add minimal front matter
-            echo "---
-title: \"$title\"
----
+          mkdir -p content/1.standard/0.introduction
+          mkdir -p content/1.standard/1.brokers
+          mkdir -p content/1.standard/2.services
+          mkdir -p content/1.standard/3.exposers
 
-$(cat "$file")
-" > "$target"
-            
-            echo "Processed: $file → $target"
-          done
-          
-          # Process Brokers files (same pattern)
-          for file in $(find ./1.\ Brokers -name "*.md" | sort -n); do
-            filename=$(basename "$file" .md)
-            slug=$(echo "$filename" | sed -E 's/^[0-9]+(\.[0-9]+)*[ -]*//')
-            slug=$(echo "$slug" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
-            
-            dir="content/standard/brokers"
-            mkdir -p "$dir"
-            target="$dir/$slug.md"
-            
-            title=$(grep -m 1 "^#" "$file" | sed 's/^#[ ]*//' || echo "$slug")
-            
-            echo "---
-title: \"$title\"
----
+          # Create navigation files
+          cat > content/1.standard/.navigation.yml << EOL
+          title: The Standard
+          icon: i-lucide-book-open
+          EOL
 
-$(cat "$file")
-" > "$target"
-            
-            echo "Processed: $file → $target"
-          done
-          
-          # Process Services files
-          for file in $(find ./2.\ Services -name "*.md" | sort -n); do
-            filename=$(basename "$file" .md)
-            slug=$(echo "$filename" | sed -E 's/^[0-9]+(\.[0-9]+)*[ -]*//')
-            slug=$(echo "$slug" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
-            
-            dir="content/standard/services"
-            mkdir -p "$dir"
-            target="$dir/$slug.md"
-            
-            title=$(grep -m 1 "^#" "$file" | sed 's/^#[ ]*//' || echo "$slug")
-            
-            echo "---
-title: \"$title\"
----
+          cat > content/1.standard/0.introduction/.navigation.yml << EOL
+          title: Introduction
+          icon: i-lucide-compass
+          EOL
 
-$(cat "$file")
-" > "$target"
-            
-            echo "Processed: $file → $target"
-          done
-          
-          # Process Exposers files
-          for file in $(find ./3.\ Exposers -name "*.md" | sort -n); do
-            filename=$(basename "$file" .md)
-            slug=$(echo "$filename" | sed -E 's/^[0-9]+(\.[0-9]+)*[ -]*//')
-            slug=$(echo "$slug" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
-            
-            dir="content/standard/exposers"
-            mkdir -p "$dir"
-            target="$dir/$slug.md"
-            
-            title=$(grep -m 1 "^#" "$file" | sed 's/^#[ ]*//' || echo "$slug")
-            
-            echo "---
-title: \"$title\"
----
+          cat > content/1.standard/1.brokers/.navigation.yml << EOL
+          title: Brokers
+          icon: i-lucide-plug
+          EOL
 
-$(cat "$file")
-" > "$target"
-            
-            echo "Processed: $file → $target"
-          done
-          
-          echo "Content processing complete!"
+          cat > content/1.standard/2.services/.navigation.yml << EOL
+          title: Services
+          icon: i-lucide-layers
+          EOL
 
-      - name: Commit changes
+          cat > content/1.standard/3.exposers/.navigation.yml << EOL
+          title: Exposers
+          icon: i-lucide-route
+          EOL
+
+          # Copy Introduction files
+          echo "Copying Introduction files..."
+          cp -r "./0. Introduction/"**/*.md content/1.standard/0.introduction/ || echo "No Introduction markdown files found"
+
+          # Copy Brokers files
+          echo "Copying Brokers files..."
+          cp -r "./1. Brokers/"**/*.md content/1.standard/1.brokers/ || echo "No Brokers markdown files found"
+
+          # Copy Services files
+          echo "Copying Services files..."
+          cp -r "./2. Services/"**/*.md content/1.standard/2.services/ || echo "No Services markdown files found"
+
+          # Copy Exposers files
+          echo "Copying Exposers files..."
+          cp -r "./3. Exposers/"**/*.md content/1.standard/3.exposers/ || echo "No Exposers markdown files found"
+
+          echo "Content copying complete!"
+          
+          # Check if files were copied
+          find content/1.standard -type f | sort
+
+      - name: Commit and push changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add content/
-          git commit -m "Auto-process Standard content" || echo "No changes to commit"
+          git commit -m "Auto-copy Standard content to Nuxt content directory" || echo "No changes to commit"
           git push

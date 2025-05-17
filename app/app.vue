@@ -14,8 +14,10 @@ const combinedNavigation = computed(() => {
   
   // Add standard navigation as a top-level item if it exists
   if (standardNavigation.value && standardNavigation.value.length > 0) {
-    console.log("standardNavigation", standardNavigation.value)
-    result.push(...standardNavigation.value)
+    const standardChildren = standardNavigation.value[0]?.children
+    if (standardChildren) {
+      result.push(...standardChildren)
+    }
   }
   
   return result
