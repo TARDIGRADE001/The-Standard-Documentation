@@ -113,78 +113,78 @@ Core Components of The Standard
   ---
   icon: i-simple-icons-nuxt
   target: _blank
-  to: https://nuxt.com
+  to: /standard/introduction/introduction
   ---
   #title
-  Nuxt 3
+  Conceptual
 
   #description
-  Powered by Nuxt 3 for optimal performances and SEO.
+  A conceptual approach to software engineering.
+  :::
+
+  :::u-page-feature
+  ---
+  icon: i-simple-icons-nuxt
+  target: _blank
+  to: /standard/introduction/0-the-theory#_002-tri-nature
+  ---
+  #title
+  Tri-nature approach
+
+  #description
+  A tri-nature approach to software engineering.
   :::
 
   :::u-page-feature
   ---
   icon: i-simple-icons-markdown
   target: _blank
-  to: https://content.nuxt.com
+  to: /standard/brokers/brokers
   ---
   #title
-  Markdown
+  Brokers
 
   #description
-  Write your pages with MDC thanks to Nuxt Content.
+  Learn about the integration layer that connects your business logic to external resources.
   :::
 
   :::u-page-feature
   ---
   icon: i-lucide-sparkles
   target: _blank
-  to: https://ui.nuxt.com
+  to: /standard/services/services
   ---
   #title
-  Nuxt UI v3
+  Services
 
   #description
-  Offers a very large set of full customizable components.
+  Learn about the core business logic that's testable and maintainable.
   :::
 
   :::u-page-feature
   ---
   icon: i-simple-icons-typescript
   target: _blank
-  to: https://www.typescriptlang.org
+  to: /standard/exposers/exposers
   ---
   #title
-  TypeScript
+  Exposers
 
   #description
-  A fully typed development experience.
-  :::
-
-  :::u-page-feature
-  ---
-  icon: i-simple-icons-nuxtdotjs
-  target: _blank
-  to: https://content.nuxt.com/docs/studio
-  ---
-  #title
-  Nuxt Studio
-
-  #description
-  Supported by Nuxt Studio for fast updates and previews.
+  Learn about the components that expose your business logic to the outside world.
   :::
 
   :::u-page-feature
   ---
   icon: i-lucide-search
   target: _blank
-  to: https://ui.nuxt.com/components/content-search
+  to: /standard/introduction/3-testimonials
   ---
   #title
-  Search
+  Testimonials
 
   #description
-  A full-text search modal powered by Fuse.js.
+  Hear from the community about their experiences with The Standard.
   :::
 ::
 
